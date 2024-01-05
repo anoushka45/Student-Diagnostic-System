@@ -1,0 +1,144 @@
+{%extends 'teacher/baseDash.html' %}
+
+{%block title%}Teacher Authentication{%endblock title%}
+{%block cssfile%}<link rel="stylesheet" href="/static/css/teacher/dash/dash.css">{%endblock cssfile%}
+{%block body%}
+{% if messages %}
+{% endif %} 
+
+<section id="current">
+  {% comment %} <div class="container"> {% endcomment %}
+
+    <h2>Welcome to Student Diagnostics System!!!!</h2>
+    {% comment %} <div class="test">
+      {% comment %} <button type="submit" class="btn btn-primary my-2" style="margin-bottom: 10px;">SET QUIZ</button> {% endcomment %}
+      {% comment %} <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Subject</th>
+            <th scope="col">No. of questions</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in data%}
+          <tr>
+            <th scope="row">{{i}}</th>
+            <td>{{i.fields.subject}}</td>
+            <td>{{i.fields.qno}}</td>
+            <td>{{i.fields.datee }}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+      {% endcomment %}
+  </section>
+<section id="set">
+    {% comment %} <div class="row"> {% endcomment %}
+      <div class=" comp2 details" style=" width:45%; display: inline-block" >
+        <h3>Add Questions</h3>
+        <form class="form-floating data" method="POST" action="/addQuestion">{% csrf_token %}
+          <div class="form-floating">
+            <div class="box">
+              <select class="form-select" id="floatingSelect" name="subject" aria-label="Floating label select example">
+                <option selected>Select the subject</option>
+                <option value="DSA">Data Structures</option>
+                <option value="SE">Software Engineering</option>
+                <option value="JP">Java</option>required
+              </select> 
+              {% comment %} <label for="floatingSelect">Subjects</label> {% endcomment %}
+              {% comment %} <input type="text" class="form-control" id="floatingInputValue" name="subject" value="JP" placeholder="Enter the subject" > {% endcomment %}
+            </div>
+            <div class="box">
+              <input type="text" class="form-control" id="floatingInputValue" name="question" placeholder="Enter the Question" required>
+              {% comment %} <label for="floatingInputValue">Enter the Question</label> {% endcomment %}
+            </div>
+            <div class="box">
+              <input type="text" class="form-control" id="floatingInputValue" name="topic" placeholder="Enter the Topic" required>
+              {% comment %} <label for="floatingInputValue">Enter the Topic</label> {% endcomment %}
+            </div>
+            
+            <div class="row">
+              <div class="col">
+                <div class="box">
+                  <input type="text" class="form-control" name="op1" required placeholder="Option 1" aria-label="op1">
+                </div>
+              </div>
+              <div class="col">
+                <div class="box">
+                  <input type="text" class="form-control" name="op2" required placeholder="Option 2" aria-label="op2">
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col">
+                <div class="box">
+                  <input type="text" class="form-control" name="op3" required placeholder="Option 3" aria-label="op3">
+                </div>
+              </div>
+              <div class="col">
+                <div class="box">
+                  <input type="text" class="form-control" name="op4" required placeholder="Option 4" aria-label="op4">
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col">
+                <div class="box">
+                  <input type="text" class="form-control" name="correct" required placeholder="Type correct answer" aria-label="op3">
+                </div>
+              </div>
+              <div class="col">
+                {% comment %} <div class="box"> {% endcomment %}
+                  <div class="form-group box ">
+                    <select class="form-select" id="floatingSelect" name="diff" aria-label="Floating label select example">
+                      <option selected>Difficulty level</option>
+                      <option value="easy">easy</option>
+                      <option value="medium">medium</option>
+                      <option value="hard">hard</option>required
+                    </select>
+                  </div>
+                {% comment %} </div> {% endcomment %}
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary my-2" style="margin-bottom: 10px;">ADD</button>{% csrf_token %}
+          </div>
+        </form>
+      </div>
+
+      <div class=" comp3 details" style="height:350px; width:45%; display: inline-block">
+        <h3>Create Test</h3>
+        <form class="form-floating data" method="POST" action="/setTest">
+          <div class="form-floating">
+            <div class="box">
+              <select class="form-select" id="floatingSelect" name="subject" aria-label="Floating label select example">
+                <option selected>Select the subject</option>
+                <option value="DSA">Data Structures</option>
+                <option value="SE">Software Engineering</option>
+                <option value="JP">Java</option>required
+              </select>
+            </div>
+            <div class="box">
+              <input type="text" class="form-control" name="qno" required placeholder="No. of Questions" aria-label="ques">
+            </div>
+            <div class="box">
+              <input type="date" class="form-control" name="datee" required placeholder="date for quiz" aria-label="date">
+            </div>
+            <button type="submit" class="btn btn-primary my-2" style="margin-bottom: 10px;">SET QUIZ</button>{% csrf_token %}
+          </div>
+        
+        </form>
+      </div>
+    </div>
+  
+  </section>
+  
+
+
+
+
+{%endblock body%}

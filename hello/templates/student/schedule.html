@@ -1,0 +1,53 @@
+{%extends 'student/baseDash.html' %}
+
+{%block title%}Quiz{%endblock title%}
+{%block cssfile%}<link rel="stylesheet" href="/static/css/student/sched.css">{%endblock cssfile%}
+{%block body%}
+{% if messages %}
+{% endif %} 
+
+<section id="schedule">
+  <div class="test">
+  <h2>SCHEDULE</h2>
+<hr></div>
+        <div class="itemsss" style="margin:10px; display:inline-block;">
+            {%for i in data%}
+            
+            <div class="" style="margin:10px; display:inline-block;">
+                <div class="card" style="width: 18rem;" >
+                    <div class="card-body">
+                      <h5 class="card-title">{{i.subject}}</h5>
+                      <p class="card-text">No of Questions: {{i.qno}}<br>Date: {{i.datee}}</p>
+                    </div>
+                  </div>
+                    
+                </div>
+            
+            {%endfor%}
+        </div>
+        <div>
+        <a class="btn btn-dark" href="/student2">back</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </section>
+
+{%endblock body%}
